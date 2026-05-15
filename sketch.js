@@ -1,25 +1,23 @@
 await Canvas();
-world.gravity.y = 10;
+world.gravity.y = 9.8;
 
-let ball = new Sprite();
-ball.diameter = 50;
-ball.img = '🤪';
+let ladybug = new Sprite();
+ladybug.diameter = 50;
+ladybug.img = '🤪';
 
 let groundA = new Sprite();
 groundA.x = -120;
-groundA.width = 220;
-groundA.rotation = 30;
+groundA.y = 200;
+groundA.width = 500;
+groundA.rotation = 0;
 groundA.physics = STATIC;
 
-let groundB = new Sprite();
-groundB.x = 120;
-groundB.width = 220;
-groundB.rotation = -30;
-groundB.physics = STATIC;
-
-q5.update = function () {
+q5.update = function move() {
 	background('skyblue');
-	text('click to jump!', 0, -50);
 
-	if (mouse.presses()) ball.vel.y = -5;
+	if (kb.pressing('up')) ladybug.vel.y = -4;
+	else if (kb.pressing('right')) ladybug.direction = 0;
+	else if (kb.pressing('left')) ladybug.direction = 180;
+	
 };
+
