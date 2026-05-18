@@ -1,9 +1,29 @@
 await Canvas();
 world.gravity.y = 9.8;
 
+let ground = new Group();
+ground.physics = STATIC;
+ground.d = 24;
+ground.img = '🟫';
+ground.tile = '=';
+
+let coins = new Group();
+coins.physics = STATIC;
+coins.d = 24;
+coins.img = '🟡';
+coins.tile = 'o';
+
+let tiles = [
+'..........========......
+=================================='
+];
+
+let platforms = new Group();
+platforms.addTiles(tiles, -54, -99, 28, 28);
+
 let ladybug = new Sprite();
 ladybug.diameter = 50;
-ladybug.img = '🤪';
+ladybug.img = '🐞';
 
 let groundA = new Sprite();
 groundA.x = -120;
