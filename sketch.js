@@ -14,30 +14,35 @@ coins.img = '🟡';
 coins.tile = 'o';
 
 let tiles = [
-'..........========......
-=================================='
+	'..........========......',
+	'=================================='
 ];
 
-let platforms = new Group();
-platforms.addTiles(tiles, -54, -99, 28, 28);
+let level1 = new Group();
+level1.addTiles(tiles, -200, 100,28, 28);
 
 let ladybug = new Sprite();
 ladybug.diameter = 50;
 ladybug.img = '🐞';
+ladybug.rotationLock = true;
 
-let groundA = new Sprite();
-groundA.x = -120;
-groundA.y = 200;
-groundA.width = 500;
-groundA.rotation = 0;
-groundA.physics = STATIC;
 
 q5.update = function move() {
 	background('skyblue');
 
-	if (kb.pressing('up')) ladybug.vel.y = -4;
-	else if (kb.pressing('right')) ladybug.direction = 0;
-	else if (kb.pressing('left')) ladybug.direction = 180;
+	if (ladybug.colliding(level1)) {
+		if (kb.presses('up')) {
+			ladybug.vel.y = -7;
+		}
+	}
+	if (kb.presses('right')) {
+		ladybug.direction = 0;
+		ladybug.vel.x = 5;
+	}
+	else if (kb.presses('left')) {
+		ladybug.direction = 180;
+		ladybug.vel.x = -5;
+	}
 	
 };
 
