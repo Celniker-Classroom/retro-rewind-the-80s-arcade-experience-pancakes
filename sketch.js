@@ -6,6 +6,7 @@ ground.physics = STATIC;
 ground.d = 24;
 ground.img = '🟫';
 ground.tile = '=';
+ground.bounciness = 0;
 
 let coins = new Group();
 coins.physics = STATIC;
@@ -19,12 +20,14 @@ let tiles = [
 ];
 
 let level1 = new Group();
-level1.addTiles(tiles, -200, 100,28, 28);
+level1.addTiles(tiles, -500, 100, 28, 28);
 
 let ladybug = new Sprite();
 ladybug.diameter = 50;
 ladybug.img = '🐞';
 ladybug.rotationLock = true;
+ladybug.friction = 0;
+ladybug.bounciness = 0;
 
 
 q5.update = function move() {
