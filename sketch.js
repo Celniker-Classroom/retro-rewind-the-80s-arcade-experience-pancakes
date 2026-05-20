@@ -26,7 +26,7 @@ let ladybug = new Sprite();
 ladybug.diameter = 50;
 ladybug.img = '🐞';
 ladybug.rotationLock = true;
-ladybug.friction = 0;
+ladybug.friction = 0.1;
 ladybug.bounciness = 0;
 
 
@@ -46,14 +46,12 @@ q5.update = function move() {
 		ladybug.direction = 180;
 		ladybug.vel.x = -5;
 	}
-	
-};
 
-q5.update = function coins() {
-	count = 0;
-	if (ladybug.overlaps(coins)) {
-		coins.delete;
-		count = count + 1;
+	let touchedCoins = ladybug.overlaps(coins);
+
+
+	if (touchedCoins) {
+		touchedCoins.remove();
 	}
-}
+};
 
