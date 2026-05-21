@@ -1,4 +1,4 @@
-await Canvas(0, 0, 400, 500);
+await Canvas();
 world.gravity.y = 9.8;
 
 let ground = new Group();
@@ -21,6 +21,10 @@ let tiles = [
 
 let level1 = new Group();
 level1.addTiles(tiles, -900, height/2-50, 28, 28);
+let count = 0; 
+
+ground.addTiles(tiles, -900, height/2-50, 28, 28);
+coins.addTiles(tiles, -900, height/2-50, 28, 28);
 
 let ladybug = new Sprite();
 ladybug.diameter = 50;
@@ -46,17 +50,9 @@ q5.update = function move() {
 		ladybug.direction = 180;
 		ladybug.vel.x = -5;
 	}
-	
-};
 
-q5.update2 = function coinDelete() {
-	clear();
-	count = 0;
-
-	ladybug.move();
-
-	if (ladybug.overlaps(coins)) {
+	ladybug.overlap(coins, (player, coins) => {
 		coins.delete();
-		count = count + 1;
-	}
-}
+		count += 1;
+	});
+};
