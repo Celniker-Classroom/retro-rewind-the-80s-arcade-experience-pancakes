@@ -49,10 +49,14 @@ q5.update = function move() {
 	
 };
 
-q5.update = function coins() {
+q5.update2 = function coinDelete() {
+	clear();
 	count = 0;
+
+	ladybug.move();
+
 	if (ladybug.overlaps(coins)) {
-		coins.delete;
+		coins.delete();
 		count = count + 1;
 	}
 }
