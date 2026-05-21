@@ -1,6 +1,25 @@
 await Canvas();
 world.gravity.y = 9.8;
 
+const coinImagePath = 'assets/gold.png';
+let coinImage = null;
+
+if (typeof loadImage === 'function') {
+	try {
+		let loaded = loadImage(coinImagePath);
+		if (loaded && typeof loaded.then === 'function') {
+			loaded.then((img) => {
+				coinImage = img;
+			}).catch(() => {
+				coinImage = null;
+			});
+		} else {
+			coinImage = loaded || null;
+		}
+	} catch (error) {
+		coinImage = null;
+	}
+}
 let ground = new Group();
 ground.physics = STATIC;
 ground.d = 24;
