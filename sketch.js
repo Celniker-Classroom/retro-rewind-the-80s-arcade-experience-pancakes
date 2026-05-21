@@ -5,7 +5,7 @@ world.gravity.y = 9.8;
 let ground = new Group();
 ground.physics = STATIC;
 ground.d = 24;
-ground.img = '🟫';
+ground.img = 'assets/tiles.png';
 ground.tile = '=';
 ground.bounciness = 0;
 
@@ -13,7 +13,7 @@ ground.bounciness = 0;
 let coins = new Group();
 coins.physics = STATIC;
 coins.d = 24;
-coins.img = '🟡';
+coins.img = 'assets/gold.png';
 coins.tile = 'o';
 
 
@@ -24,17 +24,17 @@ let tiles = [
 
 
 let level1 = new Group();
-level1.addTiles(tiles, -900, height/2-50, 28, 28);
+level1.addTiles(tiles, -900, height/2-50, 40, 40);
 let count = 0;
 
 
-ground.addTiles(tiles, -900, height/2-50, 28, 28);
-coins.addTiles(tiles, -900, height/2-50, 28, 28);
+//ground.addTiles(tiles, -900, height/2-50, 40, 40);
+//coins.addTiles(tiles, -900, height/2-50, 40, 40);
 
 
 let ladybug = new Sprite();
-ladybug.diameter = 50;
-ladybug.img = '🐞';
+ladybug.diameter = 75;
+ladybug.img = 'assets/ladybug.png';
 ladybug.rotationLock = true;
 ladybug.friction = 0;
 ladybug.bounciness = 0;
