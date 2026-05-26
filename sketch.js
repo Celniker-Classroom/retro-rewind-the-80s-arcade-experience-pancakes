@@ -38,7 +38,7 @@ ladybug.rotationLock = true;
 ladybug.friction = 0;
 ladybug.bounciness = 0;
 
-ladybug.addAnis('assets/ladybug.png', '177x109',{
+ladybug.addAnis('assets/ladybug.png', '178x109',{
     run: { row: 0, frames: 1},
     happy: { row: 1, frames: 2, frameRate: 0.5 },
     sad: { row: 2, frames: 1, frameRate: 0.5 }
