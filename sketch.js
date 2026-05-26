@@ -34,13 +34,16 @@ let count = 0;
 
 let ladybug = new Sprite();
 ladybug.diameter = 75;
-ladybug.img = 'assets/ladybug.png';
 ladybug.rotationLock = true;
 ladybug.friction = 0;
 ladybug.bounciness = 0;
 
-
-
+ladybug.addAnis('assets/ladybug.png', '177x109',{
+    run: { row: 0, frames: 1},
+    happy: { row: 1, frames: 2, frameRate: 0.5 },
+    sad: { row: 2, frames: 1, frameRate: 0.5 }
+})
+ladybug.changeAni('run');
 
 q5.update = function move() {
    background('skyblue');
@@ -49,21 +52,25 @@ q5.update = function move() {
    if (ladybug.colliding(level1)) {
        if (kb.presses('up')) {
            ladybug.vel= [1,-7];
+           ladybug.changeAni('run');
        }
    }
    if (kb.presses('right')) {
        ladybug.direction = 0;
        ladybug.vel.x = 5;
+       ladybug.changeAni('run');
    }
    else if (kb.presses('left')) {
        ladybug.direction = 180;
        ladybug.vel.x = -5;
+       ladybug.changeAni('run');
    }
 
 
    ladybug.overlap(coins, (player, coins) => {
        coins.delete();
        count += 1;
+       ladybug.changeAni('happy');
    });
 };
 
