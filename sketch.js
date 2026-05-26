@@ -1,11 +1,11 @@
 await Canvas();
-world.gravity.y = 9.8;
+world.gravity.y = 20;
 
 
 let ground = new Group();
 ground.physics = STATIC;
 ground.d = 24;
-ground.img = 'assets/tiles.png';
+ground.img = 'assets/tiles (1).png';
 ground.tile = '=';
 ground.bounciness = 0;
 
@@ -18,18 +18,17 @@ coins.tile = 'o';
 
 
 let tiles = [
-   '...............o.............o........oo...........o...o..................',
-   '=========================================================================='
+   '...................======..........=======.......................................................=====...............',
+    '..........................................................................',
+    '..........................................................................',
+    '...............o.............o........oo...........o...o..................',
+   '======================================================================================='
 ];
 
 
 let level1 = new Group();
-level1.addTiles(tiles, -900, height/2-50, 40, 40);
+level1.addTiles(tiles, -900, height/2-300, 40, 40);
 let count = 0;
-
-
-//ground.addTiles(tiles, -900, height/2-50, 40, 40);
-//coins.addTiles(tiles, -900, height/2-50, 40, 40);
 
 
 let ladybug = new Sprite();
@@ -55,16 +54,16 @@ q5.update = function move() {
            ladybug.changeAni('run');
        }
    }
-   if (kb.presses('right')) {
+   if (kb.pressing('right')) {
        ladybug.direction = 0;
-       ladybug.vel.x = 5;
+       ladybug.vel.x = 7;
        ladybug.changeAni('run');
    }
-   else if (kb.presses('left')) {
+   /* else if (kb.pressing('left')) {
        ladybug.direction = 180;
        ladybug.vel.x = -5;
        ladybug.changeAni('run');
-   }
+   } */
 
 
    ladybug.overlap(coins, (player, coins) => {
@@ -74,3 +73,15 @@ q5.update = function move() {
    });
 };
 
+q5.draw = function() {
+    clear();
+
+    camera.x = ladybug.x;
+}
+
+q5.gameOver = function() {
+    if (ladybug.y > height) {
+        ladybug.changeAni('sad');
+        displayText('Game Over', width/2, height/2);
+    }
+}
