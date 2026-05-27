@@ -290,7 +290,7 @@ q5.draw = function() {
         textAlign(CENTER, CENTER);
 
         textSize(98);
-        text('Ladybug Disco', width / 2 - 700, height / 2 - 700);
+        text('Ladybug Disco', 0, -250);
 
         fill('#ffffff');
         rect(instructionsButton.x, instructionsButton.y, instructionsButton.w, instructionsButton.h, 16);
