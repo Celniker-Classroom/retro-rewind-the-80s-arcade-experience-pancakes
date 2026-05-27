@@ -105,7 +105,9 @@ function setGameSpritesVisible(visible) {
     }
 
     // Keep barrier hidden when returning to gameplay.
-    barrier.visible = false;
+    if (typeof barrier !== 'undefined' && barrier) {
+        barrier.visible = false;
+    }
 }
 
 function openIntro() {
@@ -222,7 +224,7 @@ q5.update = function move() {
         return;
     }
 
-    if (ladybug.colliding(barrier)) {
+    if (typeof barrier !== 'undefined' && barrier && ladybug.colliding(barrier)) {
         resetGame();
         return;
     }
